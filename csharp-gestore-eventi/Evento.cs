@@ -15,7 +15,7 @@ namespace csharp_gestore_eventi
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentNullException("Il titolo non può essere vuoto");
+                    throw new ArgumentException("Il titolo non può essere vuoto");
                 else
                     titolo = value;
             }

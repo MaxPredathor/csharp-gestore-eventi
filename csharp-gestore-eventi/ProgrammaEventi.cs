@@ -9,7 +9,18 @@ namespace csharp_gestore_eventi
 {
     public class ProgrammaEventi
     {
-        public string Titolo { get; set; }
+        private string titolo;
+        public string Titolo
+        {
+            get { return titolo; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Il titolo non può essere vuoto");
+                else
+                    titolo = value;
+            }
+        }
         public List<Evento> Eventi { get; set; }
         public ProgrammaEventi(string titolo)
         {
@@ -38,6 +49,7 @@ namespace csharp_gestore_eventi
             {
                 megaStringa += $"Titolo: {evento.Titolo}, Data: {evento.Data}, Partecipanti: {evento.PostiPrenotati}\n";
             }
+            Console.WriteLine(megaStringa);
             return megaStringa;
         }
         public int ControlloEventi()
@@ -47,6 +59,7 @@ namespace csharp_gestore_eventi
         public void SvuotaEventi()
         {
             Eventi.Clear();
+            Console.WriteLine("Eventi eliminati con successo!");
         }
         public override string ToString()
         {
